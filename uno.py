@@ -64,21 +64,15 @@ class Game:
 
     def deal_start_hand(self, number_of_players,deck):
         players = list(PLAYER_REF.values())
-        for i in range(7):
-            for current_player in players:
-                print(len(current_player.hand))
-                print("current_player", current_player)
-                card = deck.pop()
-                current_player.hand = current_player.hand.extend(card)
-                print(len(deck))
+        
+        for current_player in players:
+            playerHand = []
+            for i in range(7):
+                card = deck.pop(len(deck)-1)
+                playerHand.append(card)
             i += 1
-        # print(PLAYER_REF.values())
-        # card = deck[0]
-        # print(card)
-        # deck.remove(deck[0])
-        # print(len(deck))
-        # for player in PLAYER_REF.values():
-            
+            current_player.hand = playerHand
+    
         return deck
 
 def startGame():
@@ -102,15 +96,12 @@ def startGame():
             enough_players = True
     #Assigns starting hand to each player
     deck = game.deal_start_hand(len(PLAYER_REF),deck)
-
-    for key,value in PLAYER_REF.items():
-        print(f"{key}'s hand = {value.hand}")
     #Starts the game of/Creates a card pile
-    #card_Pile = Card_Pile(deck)
+    card_Pile = Card_Pile(deck)
     
-    #unoOut = False
-    #While no one has one a player takes a turn
-    # while (unoOut == False):
-    #     card_Pile.card = oneTurn
+    unoOut = False
+    While no one has one a player takes a turn
+    while (unoOut == False):
+        card_Pile.card = oneTurn
 
 startGame()
